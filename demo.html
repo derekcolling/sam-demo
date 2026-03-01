@@ -23,12 +23,9 @@
       background-image: url('explore-thingstodo-at-shore-hotel-santa-monica-california.jpeg');
       background-size: cover;
       background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: 'Satoshi', sans-serif;
+      height: 100vh;
       overflow: hidden;
+      font-family: 'Satoshi', sans-serif;
       position: relative;
     }
 
@@ -41,9 +38,10 @@
     }
 
     .stage {
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
       z-index: 1;
-      transform-origin: center center;
     }
 
     .page-logo {
@@ -1246,10 +1244,10 @@
 
         function fitStage() {
           const stage = document.querySelector('.stage');
-          const deviceHeight = 880; // 844px phone + 36px device padding
+          const deviceHeight = 880;
           const padding = 40;
           const scale = Math.min(1, (window.innerHeight - padding) / deviceHeight);
-          stage.style.transform = `scale(${scale})`;
+          stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
         }
         window.addEventListener('resize', fitStage);
         fitStage();
