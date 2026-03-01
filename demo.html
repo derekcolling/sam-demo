@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Satoshi:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url('explore-thingstodo-at-shore-hotel-santa-monica-california.jpeg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Satoshi', sans-serif;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .stage {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-logo {
+      position: absolute;
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      left: -110px;
+      top: 36px;
+      object-fit: cover;
+    }
+
+    .device {
+      position: relative;
+    }
+
+    /* ── Device chassis ── */
+    .device {
+      position: relative;
+      background: linear-gradient(148deg, #2e2e34 0%, #1c1c22 45%, #101014 100%);
+      border-radius: 64px;
+      padding: 18px 14px;
+      box-shadow:
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.11),
+        inset 0 2px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+        0 0 0 1px rgba(0, 0, 0, 0.95),
+        0 80px 160px rgba(0, 0, 0, 0.9),
+        0 40px 80px rgba(0, 0, 0, 0.55);
+      flex-shrink: 0;
+    }
+
+    /* Mute switch */
+    .btn-mute {
+      position: absolute;
+      left: -3px;
+      top: 108px;
+      width: 3px;
+      height: 26px;
+      background: linear-gradient(to right, #111, #1e1e24);
+      border-radius: 2px 0 0 2px;
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.07);
+    }
+
+    /* Volume up */
+    .btn-vol-up {
+      position: absolute;
+      left: -3px;
+      top: 158px;
+      width: 3px;
+      height: 54px;
+      background: linear-gradient(to right, #111, #1e1e24);
+      border-radius: 2px 0 0 2px;
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.07);
+    }
+
+    /* Volume down */
+    .btn-vol-down {
+      position: absolute;
+      left: -3px;
+      top: 228px;
+      width: 3px;
+      height: 54px;
+      background: linear-gradient(to right, #111, #1e1e24);
+      border-radius: 2px 0 0 2px;
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.07);
+    }
+
+    /* Power */
+    .btn-power {
+      position: absolute;
+      right: -3px;
+      top: 180px;
+      width: 3px;
+      height: 82px;
+      background: linear-gradient(to left, #111, #1e1e24);
+      border-radius: 0 2px 2px 0;
+      box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.07);
+    }
+
+    /* Dynamic island */
+    .dynamic-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 122px;
+      height: 34px;
+      background: #000;
+      border-radius: 999px;
+      z-index: 100;
+      pointer-events: none;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    /* ── Phone frame ── */
+    .phone {
+      width: 390px;
+      height: 844px;
+      background: #203141;
+      border-radius: 52px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* ── Status bar ── */
+    .status-bar {
+      background: #203141;
+      height: 50px;
+      padding: 14px 28px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .status-time {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    .status-icons {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .status-icons .material-symbols-outlined {
+      color: white;
+      font-size: 17px;
+    }
+
+    /* ── Header ── */
+    .chat-header {
+      background: #203141;
+      padding: 10px 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .header-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .header-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header-text-label {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .header-text-name {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: white;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    .online-dot {
+      margin-left: auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #6BC4BB;
+      box-shadow: 0 0 0 2px rgba(107, 196, 187, 0.25), 0 0 10px rgba(107, 196, 187, 0.5);
+    }
+
+    /* ── Chat area ── */
+    .chat-area {
+      flex: 1;
+      padding: 18px 16px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    /* ── Shared message row ── */
+    .msg-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .msg-row.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .user-row {
+      justify-content: flex-end;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .user-row.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Avatars in chat ── */
+    .msg-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .msg-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .msg-avatar-spacer {
+      width: 30px;
+      flex-shrink: 0;
+    }
+
+    /* ── Bubbles ── */
+    .sam-bubble-wrap {
+      display: flex;
+      flex-direction: column;
+      max-width: 82%;
+    }
+
+    .sam-name {
+      font-family: 'Fraunces', serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #203141;
+      margin-bottom: 5px;
+      margin-left: 3px;
+    }
+
+    .sam-bubble {
+      background: white;
+      border-radius: 5px 16px 16px 16px;
+      padding: 12px 15px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #2C3338;
+      box-shadow: 0 2px 10px rgba(32, 49, 65, 0.07);
+    }
+
+    .sam-bubble strong {
+      color: #203141;
+      font-weight: 600;
+    }
+
+    .user-bubble {
+      background: #867d64;
+      border-radius: 16px 5px 16px 16px;
+      padding: 12px 15px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      color: white;
+      max-width: 82%;
+      box-shadow: 0 2px 10px rgba(32, 49, 65, 0.2);
+    }
+
+    /* ── Typing indicator ── */
+    .typing-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .typing-row.show {
+      opacity: 1;
+    }
+
+    .typing-bubble {
+      background: white;
+      border-radius: 5px 16px 16px 16px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(32, 49, 65, 0.07);
+    }
+
+    /* User typing indicator */
+    .user-typing-row {
+      display: flex;
+      justify-content: flex-end;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .user-typing-row.show { opacity: 1; }
+    .user-typing-bubble {
+      background: #203141;
+      border-radius: 16px 5px 16px 16px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(32, 49, 65, 0.2);
+    }
+    .user-typing-bubble .dot { background: rgba(255,255,255,0.7); }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #6BC4BB;
+      animation: bounce 1.3s ease infinite;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.18s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.36s;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      55%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+
+      28% {
+        transform: translateY(-7px);
+        opacity: 1;
+      }
+    }
+
+    /* ── Sam recommendation row (text + card stacked) ── */
+    .sam-rec-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .sam-rec-row.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sam-rec-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 88%;
+    }
+
+    /* ── Penthouse card ── */
+    .card {
+      background: white;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 4px 22px rgba(32, 49, 65, 0.13);
+      border: 1px solid #f0f0ee;
+      position: relative;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(16px) scale(0.97);
+      transition: opacity 0.55s cubic-bezier(0.34, 1.2, 0.64, 1), transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card-gold-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #6BC4BB, #4aa9a0);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover .card-img img {
+      transform: scale(1.03);
+    }
+
+    .card-info {
+      padding: 13px 15px 14px 18px;
+    }
+
+    .card-scoop-label {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6BC4BB;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .card-scoop-label .material-symbols-outlined {
+      font-size: 11px;
+    }
+
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #2C3338;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .card-meta {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .card-footer {
+      border-top: 1px solid #f4f6f8;
+      padding: 9px 14px 9px 18px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .view-dossier-btn {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #203141;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 0;
+      letter-spacing: 0.01em;
+    }
+
+    .view-dossier-btn .material-symbols-outlined {
+      font-size: 13px;
+    }
+
+    /* ── Input bar ── */
+    .input-area {
+      padding: 10px 16px 28px;
+      background: #F9FAFB;
+      flex-shrink: 0;
+    }
+
+    .input-wrap {
+      background: white;
+      border-radius: 999px;
+      padding: 8px 8px 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 14px rgba(32, 49, 65, 0.09);
+    }
+
+    .chat-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: #2C3338;
+      min-width: 0;
+    }
+
+    .chat-input::placeholder {
+      color: #b0bac5;
+    }
+
+    .send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #203141;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.15s ease, background 0.15s;
+    }
+
+    .send-btn .material-symbols-outlined {
+      color: white;
+      font-size: 20px;
+    }
+
+    .send-btn.fire {
+      animation: send-fire 0.35s ease;
+    }
+
+    @keyframes send-fire {
+      0% {
+        transform: scale(1);
+      }
+
+      40% {
+        transform: scale(0.82);
+      }
+
+      70% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .input-sub {
+      text-align: center;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 10px;
+      color: #b8c2cc;
+      margin-top: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Dossier overlay ── */
+    .dossier-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 32, 48, 0.65);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .dossier-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── Dossier sheet ── */
+    .dossier-sheet {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 91%;
+      background: #FFFFFF;
+      border-radius: 26px 26px 0 0;
+      transform: translateY(100%);
+      transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      z-index: 21;
+    }
+
+    .dossier-sheet::-webkit-scrollbar {
+      display: none;
+    }
+
+    .dossier-sheet.open {
+      transform: translateY(0);
+    }
+
+    .dossier-handle-bar {
+      position: sticky;
+      top: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      padding: 12px 0 6px;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .dossier-handle {
+      width: 38px;
+      height: 4px;
+      background: #dde2e8;
+      border-radius: 999px;
+    }
+
+    .dossier-hero {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      margin-top: -20px;
+    }
+
+    .dossier-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dossier-hero-grad {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(32, 49, 65, 0.25) 0%, transparent 55%, rgba(0, 0, 0, 0.08) 100%);
+    }
+
+.dossier-body {
+      background: white;
+      border-radius: 24px 24px 0 0;
+      margin-top: -24px;
+      padding: 28px 24px 110px;
+      position: relative;
+    }
+
+    .dossier-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .dossier-title h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1E3A4C;
+      letter-spacing: -0.02em;
+      margin-bottom: 9px;
+    }
+
+    .dossier-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8D9396;
+    }
+
+    .meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #D4AF37;
+    }
+
+    .scoop-box {
+      background: #FAF9F6;
+      border: 1px solid #E5E0D6;
+      border-radius: 14px;
+      padding: 26px 20px 20px;
+      margin: 0 4px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .scoop-icon-wrap {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+      padding: 7px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    }
+
+    .scoop-icon-wrap .material-symbols-outlined {
+      color: #D4AF37;
+      font-size: 20px;
+      display: block;
+    }
+
+    .scoop-quote {
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: #1E3A4C;
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .scoop-byline {
+      font-family: 'Fraunces', serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #D4AF37;
+    }
+
+    .dossier-editorial {
+      margin-bottom: 22px;
+    }
+
+    .dossier-editorial p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 1.72;
+      color: rgba(44, 51, 56, 0.88);
+    }
+
+    .dossier-editorial p+p {
+      margin-top: 12px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-top: 1px solid #E5E0D6;
+      margin-bottom: 18px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .feature-item .material-symbols-outlined {
+      color: #1E3A4C;
+      font-size: 20px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .feature-label {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: #1E3A4C;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .feature-value {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 12px;
+      color: #8D9396;
+    }
+
+    .map-box {
+      height: 150px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(15%);
+    }
+
+    .map-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 58, 76, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-pin {
+      background: white;
+      padding: 7px;
+      border-radius: 50%;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .map-pin .material-symbols-outlined {
+      color: #1E3A4C;
+      font-size: 20px;
+      display: block;
+    }
+
+    .map-address {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1E3A4C;
+    }
+
+    /* ── Dossier action bar ── */
+    .dossier-actions {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid #E5E0D6;
+      padding: 14px 20px 20px;
+    }
+
+    .reserve-btn {
+      width: 100%;
+      background: #1E3A4C;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 15px;
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+  <img class="page-logo" src="logo.png" alt="Downtown Santa Monica" />
+  <div class="device">
+    <div class="btn-mute"></div>
+    <div class="btn-vol-up"></div>
+    <div class="btn-vol-down"></div>
+    <div class="btn-power"></div>
+
+    <div class="phone" id="phone">
+      <div class="dynamic-island"></div>
+
+      <!-- Status bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <span class="material-symbols-outlined">signal_cellular_alt</span>
+          <span class="material-symbols-outlined">wifi</span>
+          <span class="material-symbols-outlined">battery_5_bar</span>
+        </div>
+      </div>
+
+
+      <!-- Chat area -->
+      <div class="chat-area" id="chat-area">
+
+        <!-- Typing indicator -->
+        <div class="typing-row" id="typing-row">
+          <div class="msg-avatar"><img src="logo.png" alt="Sam" /></div>
+          <div class="typing-bubble">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- Sam message 1 -->
+        <div class="msg-row" id="sam-1">
+          <div class="msg-avatar"><img src="logo.png" alt="Sam" /></div>
+          <div class="sam-bubble-wrap">
+            <div class="sam-name">Sam</div>
+            <div class="sam-bubble">
+              Good evening. The marine layer is rolling in, perfect for a cozy atmosphere. Are you looking for a sunset
+              spot?
+            </div>
+          </div>
+        </div>
+
+        <!-- User typing indicator -->
+        <div class="user-typing-row" id="user-typing">
+          <div class="user-typing-bubble">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- User message -->
+        <div class="user-row" id="user-msg">
+          <div class="user-bubble">
+            Actually, yes. Where can I get a quiet drink with an ocean view? Somewhere not too crowded.
+          </div>
+        </div>
+
+        <!-- Sam rec row -->
+        <div class="sam-rec-row" id="sam-rec">
+          <div class="msg-avatar"><img src="logo.png" alt="Sam"/></div>
+          <div class="sam-rec-content">
+            <div>
+              <div class="sam-name">Sam</div>
+              <div class="sam-bubble">
+                I recommend <strong>The Penthouse</strong>. While popular, if you know where to sit, it offers quiet
+                luxury and an unparalleled vista.
+              </div>
+            </div>
+            <!-- Card -->
+            <div class="card" id="penthouse-card" onclick="openDossier()">
+              <div class="card-img">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXe-cLWW9bWMLRymvFAZkLncxSVqYYqiKMRrXJ1od9uRTO8EQ4OhpZufcN4IRKhPtWaY0meCAFBVtxPuvZYHS7iFEfyhv1Uj4L7vV_6CRgKJUwCfOgkiHaprbWljNmeKWj98gM9QduDeulNsLw52XefJXIMKf4PPyYOMXu-tNnYm-Rdmp3LYxryC-vvnw166gTht3D9EQe9mlWM97-cbbgbXa3_UQls7dIB_8FIUjGQYWVDdxPewG6rcOccOtV4G8A28M-8qGNYLU"
+                  alt="The Penthouse interior" />
+              </div>
+              <div class="card-info">
+                <div class="card-scoop-label">
+                  <span class="material-symbols-outlined">star</span>
+                  Sam's Scoop
+                </div>
+                <div class="card-title">The Penthouse</div>
+                <div class="card-meta">$$$ • Italian • 0.2mi away</div>
+              </div>
+              <div class="card-footer">
+                <button class="view-dossier-btn" onclick="openDossier(); event.stopPropagation();">
+                  View Dossier
+                  <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Input bar -->
+      <div class="input-area">
+        <div class="input-wrap">
+          <input class="chat-input" id="chat-input" type="text" placeholder="Ask for a recommendation..." readonly />
+          <button class="send-btn" id="send-btn">
+            <span class="material-symbols-outlined">arrow_upward</span>
+          </button>
+        </div>
+        <div class="input-sub">Santa Monica · Local Knowledge</div>
+      </div>
+
+      <!-- Dossier overlay -->
+      <div class="dossier-overlay" id="dossier-overlay" onclick="closeDossier()"></div>
+
+      <!-- Dossier sheet -->
+      <div class="dossier-sheet" id="dossier-sheet">
+
+        <div class="dossier-handle-bar" onclick="closeDossier()">
+          <div class="dossier-handle"></div>
+        </div>
+
+        <div class="dossier-hero">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD28tnSX1CZsdU4PFTYPy8jc424h4_Tl4cCXUt2BsXP8kCEc68YzAeWNW6uLKWEV6nzrgp6Mly4kR0vyqsq2-zvewQWh7IKoRhi9mtwvywyVfKX7fVwhBmsNgd5s9AAFVIbdFu-A4vzsHGXFeCTQDLLZV5I275K2F4AaNVH6y1KDPUfmnum46xQUAThuWrXRqqz9D3ALKylxyU_WPu9l1-YGNbcEFCHBrMaJ0j8euhop3jp26i54WQ4NKEOXqHXvtaMziqyJGQvLac"
+            alt="The Penthouse interior" />
+          <div class="dossier-hero-grad"></div>
+        </div>
+
+        <div class="dossier-body">
+
+          <div class="dossier-title">
+            <h1>The Penthouse</h1>
+            <div class="dossier-meta">
+              <span>$$$</span>
+              <span class="meta-dot"></span>
+              <span>Modern Coastal</span>
+              <span class="meta-dot"></span>
+              <span>0.2mi</span>
+            </div>
+          </div>
+
+          <div class="scoop-box">
+            <div class="scoop-icon-wrap">
+              <span class="material-symbols-outlined">vpn_key</span>
+            </div>
+            <p class="scoop-quote">"Ask for table 42 for the best sunset view. The off-menu lemon pasta is mandatory."
+            </p>
+            <div class="scoop-byline">Sam's Insider Scoop</div>
+          </div>
+
+          <div class="dossier-editorial">
+            <p>Perched atop the Huntley Hotel, this venue offers 360-degree views of the Santa Monica coastline that
+              rival any in the city. While the main dining room buzzes with a high-energy crowd, the real charm lies in
+              the details.</p>
+            <p>The culinary direction leans heavily into local seafood with a Californian twist. Expect to see local
+              celebrities and visiting moguls trading stories over shaken martinis.</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <span class="material-symbols-outlined">wb_sunny</span>
+              <div>
+                <div class="feature-label">Best For</div>
+                <div class="feature-value">Sunset Drinks</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="material-symbols-outlined">checkroom</span>
+              <div>
+                <div class="feature-label">Dress Code</div>
+                <div class="feature-value">Smart Casual</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="material-symbols-outlined">schedule</span>
+              <div>
+                <div class="feature-label">Hours</div>
+                <div class="feature-value">5pm – 11pm</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="material-symbols-outlined">volume_up</span>
+              <div>
+                <div class="feature-label">Noise Level</div>
+                <div class="feature-value">Energetic</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-box">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3JGZE-f51zJYegsqQOMMVNtfRtHPJnmXbkZQXHNTKFyL0WZaR8gt5LddQceSbBG-c7e3M8Xz6cddqU05ctT_d9VsLZ21gNeE_84NNHk8jL9AFd72b8mWB6wJ1AJ3SDtH_Z5WYGuQnOVQ6mw_-FAsu5cJXW8oxG1WILW1cXv_FW1B0ISOPeT18lGlWEUF3z6YWoH6Qu-JGY8hcsBSoiFnh5oIqa9QUQLs1IA_tc9wnosZkuFRbtaiDDjHE2whKSgM6wVHrN2PGjSI"
+              alt="Map" />
+            <div class="map-overlay">
+              <div class="map-pin">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+            </div>
+            <div class="map-address">1111 2nd St, Santa Monica</div>
+          </div>
+
+        </div>
+
+        <div class="dossier-actions">
+          <button class="reserve-btn">Reserve Table</button>
+        </div>
+
+      </div>
+
+      <script>
+        const $ = id => document.getElementById(id);
+        const delay = ms => new Promise(r => setTimeout(r, ms));
+        const raf2 = () => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+        function fadeIn(el) {
+          el.style.display = '';
+          requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('show')));
+        }
+
+        function fadeOut(el) {
+          el.classList.remove('show');
+        }
+
+        async function typeInto(input, text, speed = 28) {
+          input.value = '';
+          for (const ch of text) {
+            input.value += ch;
+            await delay(speed + Math.random() * 15 - 5);
+          }
+        }
+
+        function openDossier() {
+          $('dossier-overlay').classList.add('open');
+          $('dossier-sheet').classList.add('open');
+        }
+
+        function closeDossier() {
+          $('dossier-overlay').classList.remove('open');
+          $('dossier-sheet').classList.remove('open');
+        }
+
+        function resetAll() {
+          ['sam-1', 'user-msg', 'sam-rec'].forEach(id => {
+            const el = $(id);
+            el.classList.remove('show');
+            el.style.display = 'none';
+          });
+          $('penthouse-card').classList.remove('show');
+          $('typing-row').classList.remove('show');
+          $('user-typing').classList.remove('show');
+          $('chat-input').value = '';
+          $('chat-input').placeholder = 'Ask for a recommendation...';
+          closeDossier();
+        }
+
+        async function runDemo() {
+          resetAll();
+          await delay(600);
+
+          // ── Sam typing ──
+          $('typing-row').classList.add('show');
+          await delay(2200);
+
+          // ── Sam message 1 ──
+          fadeOut($('typing-row'));
+          await delay(250);
+          $('sam-1').style.display = 'flex';
+          await raf2();
+          $('sam-1').classList.add('show');
+          await delay(2600);
+
+          // ── User typing indicator + input ──
+          const input = $('chat-input');
+          $('user-typing').classList.add('show');
+          await delay(400);
+          await typeInto(input, "Actually, yes. Where can I get a quiet drink with an ocean view? Somewhere not too crowded.");
+          await delay(250);
+
+          // ── User sends ──
+          $('send-btn').classList.add('fire');
+          await delay(80);
+          $('user-typing').classList.remove('show');
+          input.value = '';
+          input.placeholder = 'Ask for a recommendation...';
+          $('user-msg').style.display = 'flex';
+          await raf2();
+          $('user-msg').classList.add('show');
+          await delay(500);
+          $('send-btn').classList.remove('fire');
+
+          // ── Sam typing again (move below user message) ──
+          $('chat-area').appendChild($('typing-row'));
+          $('typing-row').classList.add('show');
+          await delay(2600);
+
+          // ── Sam recommendation ──
+          fadeOut($('typing-row'));
+          await delay(250);
+          $('sam-rec').style.display = 'flex';
+          await raf2();
+          $('sam-rec').classList.add('show');
+          await delay(650);
+
+          // ── Card pops in ──
+          $('penthouse-card').classList.add('show');
+
+        }
+
+        // Hide elements before start
+        ['sam-1', 'user-msg', 'sam-rec'].forEach(id => {
+          $(id).style.display = 'none';
+        });
+
+        runDemo();
+      </script>
+    </div><!-- /phone -->
+  </div><!-- /device -->
+  </div><!-- /stage -->
+</body>
+
+</html>
