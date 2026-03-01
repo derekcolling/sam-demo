@@ -1244,8 +1244,9 @@
 
         function fitStage() {
           const stage = document.querySelector('.stage');
-          const padding = 48;
-          const scale = Math.min(1, (window.innerHeight - padding) / stage.scrollHeight);
+          const deviceHeight = 880; // 844px phone + 36px device padding
+          const padding = 40;
+          const scale = Math.min(1, (window.innerHeight - padding) / deviceHeight);
           stage.style.transform = `scale(${scale})`;
         }
         window.addEventListener('resize', fitStage);
