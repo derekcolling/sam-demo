@@ -42,6 +42,7 @@
     .stage {
       position: relative;
       z-index: 1;
+      transform-origin: center center;
     }
 
     .page-logo {
@@ -1240,6 +1241,15 @@
         });
 
         runDemo();
+
+        function fitStage() {
+          const stage = document.querySelector('.stage');
+          const padding = 48;
+          const scale = Math.min(1, (window.innerHeight - padding) / stage.scrollHeight);
+          stage.style.transform = `scale(${scale})`;
+        }
+        window.addEventListener('resize', fitStage);
+        fitStage();
       </script>
     </div><!-- /phone -->
   </div><!-- /device -->
