@@ -256,7 +256,6 @@
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity;
     }
 
     .msg-row.show {
@@ -269,7 +268,6 @@
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity;
     }
 
     .user-row.show {
@@ -422,7 +420,6 @@
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity;
     }
 
     .sam-rec-row.show {
@@ -1196,7 +1193,7 @@
 
           // ── Sam message 1 ──
           fadeOut($('typing-row'));
-          await delay(250);
+          await delay(350);
           $('sam-1').style.display = 'flex';
           await raf2();
           $('sam-1').classList.add('show');
@@ -1228,7 +1225,8 @@
 
           // ── Sam recommendation ──
           fadeOut($('typing-row'));
-          await delay(250);
+          await delay(350);
+          $('typing-row').style.display = 'none';
           $('sam-rec').style.display = 'flex';
           await raf2();
           $('sam-rec').classList.add('show');
