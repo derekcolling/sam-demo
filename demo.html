@@ -29,6 +29,7 @@
       min-height: 100vh;
       font-family: 'Satoshi', sans-serif;
       overflow: hidden;
+      position: relative;
     }
 
     body::before {
@@ -50,9 +51,12 @@
       width: 124px;
       height: 124px;
       border-radius: 50%;
-      left: -160px;
-      top: 36px;
+      /* left of centered phone: 50% - half device width (209px) - gap (20px) - logo width (124px) */
+      left: calc(50% - 353px);
+      /* vertically: 50% - half device height (440px) + 36px offset down */
+      top: calc(50% - 404px);
       object-fit: cover;
+      z-index: 2;
     }
 
     .device {
@@ -926,8 +930,8 @@
 </head>
 
 <body>
-  <div class="stage">
   <img class="page-logo" src="logo.png" alt="Downtown Santa Monica" />
+  <div class="stage">
   <div class="device">
     <div class="btn-mute"></div>
     <div class="btn-vol-up"></div>
